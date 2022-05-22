@@ -2,11 +2,13 @@
 
 hakanakgul34@gmail.com
 
-#How to start
+### How to start
 
-change file name ".env.example" to ".env"
-create a database named "laravel".
-run npm install
-run php artisan key:generate
-run php artinsa migrate
-run php artisan serve
+| X                          | Y                                         |
+| -------------------------- | ----------------------------------------- |
+| ``                         | change file name ".env.example" to ".env" |
+| ``                         | create a database named "laravel".        |
+| `npm install`              | run                                       |
+| `php artisan key:generate` | run                                       |
+| `php artinsa migrate`      | run                                       |
+| `php artisan serve`        | run                                       |
