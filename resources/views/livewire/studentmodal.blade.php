@@ -123,3 +123,49 @@
         </div>
     </div>
 </div>
+
+
+<!-- view Student Modal -->
+<div wire:ignore.self class="modal fade" id="viewStudentModal" tabindex="-1" aria-labelledby="viewStudentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewStudentModalLabel">Student Information</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click='closeModal'
+                    aria-label="Close"></button>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-body ml-3">
+                            <table class="table table-bordered">
+
+                                <tr>
+                                    <th style="width:20%">ID</th>
+                                    <td>{{ $student_id }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th style="width:20%">Name</th>
+                                    <td>{{ $name }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th style="width:20%">Email</th>
+                                    <td>{{ $email }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th style="width:20%">Course</th>
+                                    <td>{{ $course }}</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,10 +17,25 @@ class StudentLivewire extends Component
     {
         return [
             'name' => 'required|string|min:3',
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', "unique:students,email,{$this->student_id}"], //Validation with ignoring own data
             'course' => 'required|string'
         ];
     }
+
+    public function viewStudent(int $student_id)
+    {
+        $student = Student::find($student_id);
+        if ($student) {
+            $this->student_id = $student->id;
+            $this->name = $student->name;
+            $this->email = $student->email;
+            $this->course = $student->course;
+        } else {
+            return redirect()->to('/students');
+        }
+    }
+
+
 
     public function updated($fields)
     {
@@ -99,10 +114,9 @@ class StudentLivewire extends Component
         $this->resetInput();
     }
 
-
-
     public function resetInput()
     {
+        $this->student_id = "";
         $this->name = "";
         $this->email = "";
         $this->course = "";

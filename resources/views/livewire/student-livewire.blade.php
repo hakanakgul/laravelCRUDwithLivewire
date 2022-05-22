@@ -34,7 +34,13 @@
                                         <td>{{ $student->name }}</td>
                                         <td>{{ $student->email }}</td>
                                         <td>{{ $student->course }}</td>
-                                        <td>
+                                        <td class="d-flex justify-content-center">
+                                            <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#viewStudentModal"
+                                                wire:click="viewStudent({{ $student->id }})"
+                                                class="btn btn-secondary btn-sm">
+                                                View
+                                            </button>
                                             <button type="button" data-bs-toggle="modal"
                                                 data-bs-target="#updateStudentModal"
                                                 wire:click="editStudent({{ $student->id }})"
