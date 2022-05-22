@@ -11,6 +11,8 @@ class StudentLivewire extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $search = "";
+
     public $name, $email, $course, $student_id;
 
     protected function rules()
@@ -122,9 +124,15 @@ class StudentLivewire extends Component
         $this->course = "";
     }
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $students = Student::orderBy("id", "asc")->paginate(5);
+
+        $students = Student::where('name', 'like', '%' . $this->search . '%')->orderBy("id", "asc")->paginate(10);
         return view('livewire.student-livewire', [
             "students" => $students,
         ]);

@@ -9,12 +9,16 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Student CRUD with Bootstrap Modal and Livewire
+                            <input type="search" wire:model='search' placeholder="Search (name)"
+                                class="form-control float-end mx-2" style="width: 20%" />
+
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal"
                                 data-bs-target="#studentModal">
                                 Add New Student
                             </button>
                         </h4>
+
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered table-striped">
