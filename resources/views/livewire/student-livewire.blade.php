@@ -41,7 +41,10 @@
                                                 class="btn btn-primary btn-sm">
                                                 Edit
                                             </button>
-                                            <a class="btn btn-danger btn-sm">Delete</a>
+                                            <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#deleteStudentModal"
+                                                wire:click="deleteStudent({{ $student->id }})"
+                                                class="btn btn-danger btn-sm">Delete</button>
                                         </td>
                                     </tr>
                                 @empty

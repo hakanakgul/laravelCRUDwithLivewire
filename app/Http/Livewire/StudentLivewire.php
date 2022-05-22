@@ -50,16 +50,6 @@ class StudentLivewire extends Component
         }
     }
 
-    public function closeModal()
-    {
-        $this->resetInput();
-    }
-
-    public function clearModalInputs()
-    {
-        $this->resetInput();
-    }
-
     public function updateStudent()
     {
         $validatedData = $this->validate();
@@ -75,6 +65,42 @@ class StudentLivewire extends Component
         $this->dispatchBrowserEvent('close-modal');
     }
 
+    //delete student function
+    public function deleteStudent(int $student_id)
+    {
+        $student = Student::find($student_id);
+        if ($student) {
+            $this->student_id = $student->id;
+        } else {
+            return redirect()->to('/students');
+        }
+    }
+
+    public function destroyStudent()
+    {
+        $student = Student::find($this->student_id);
+        if ($student) {
+            $student->delete();
+            session()->flash("message", "Student Deleted Successfully");
+            $this->resetInput();
+            $this->dispatchBrowserEvent('close-modal');
+        } else {
+            return redirect()->to('/students');
+        }
+    }
+
+    public function closeModal()
+    {
+        $this->resetInput();
+    }
+
+    public function clearModalInputs()
+    {
+        $this->resetInput();
+    }
+
+
+
     public function resetInput()
     {
         $this->name = "";
@@ -84,7 +110,7 @@ class StudentLivewire extends Component
 
     public function render()
     {
-        $students = Student::orderBy("id", "desc")->paginate(3);
+        $students = Student::orderBy("id", "asc")->paginate(5);
         return view('livewire.student-livewire', [
             "students" => $students,
         ]);
