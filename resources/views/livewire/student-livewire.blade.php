@@ -4,10 +4,12 @@
         @if (session()->has('message'))
             <h5 class="alert alert-success">{{ session('message') }}</h5>
         @endif
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+
                         <h4>Student CRUD with Bootstrap Modal and Livewire
                             <input type="search" wire:model='search' placeholder="Search (name)"
                                 class="form-control float-end mx-2" style="width: 20%" />
@@ -55,6 +57,8 @@
                                                 data-bs-target="#deleteStudentModal"
                                                 wire:click="deleteStudent({{ $student->id }})"
                                                 class="btn btn-danger btn-sm">Delete</button>
+
+
                                         </td>
                                     </tr>
                                 @empty

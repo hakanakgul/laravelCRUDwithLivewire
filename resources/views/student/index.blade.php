@@ -2,7 +2,8 @@
 
 @section('content')
     <div>
-        <livewire:student-livewire>
+        <livewire:image-upload-livewire />
+        <livewire:student-livewire />
     </div>
 @endsection
 

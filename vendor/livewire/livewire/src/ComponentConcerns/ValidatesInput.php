@@ -152,7 +152,7 @@ trait ValidatesInput
 
     public function missingRuleFor($dotNotatedProperty)
     {
-        return ! $this->hasRuleFor($dotNotatedProperty);
+        return !$this->hasRuleFor($dotNotatedProperty);
     }
 
     public function withValidator($callback)
@@ -166,10 +166,10 @@ trait ValidatesInput
     {
         collect($rules)
             ->keys()
-            ->each(function($ruleKey) use ($data) {
+            ->each(function ($ruleKey) use ($data) {
                 throw_unless(
                     array_key_exists($this->beforeFirstDot($ruleKey), $data),
-                    new \Exception('No property found for validation: ['.$ruleKey.']')
+                    new \Exception('No property found for validation: [' . $ruleKey . ']')
                 );
             });
     }
@@ -218,16 +218,16 @@ trait ValidatesInput
         // rules that match the field, but return the rules without wildcard characters replaced,
         // so that custom attributes and messages still work as they need wildcards to work.
         $rulesForField = collect($rules)
-            ->filter(function($value, $rule) use ($field) {
-                if(! str($field)->is($rule)) {
+            ->filter(function ($value, $rule) use ($field) {
+                if (!str($field)->is($rule)) {
                     return false;
                 }
 
                 $fieldArray = str($field)->explode('.');
                 $ruleArray = str($rule)->explode('.');
 
-                for($i = 0; $i < count($fieldArray); $i++) {
-                    if(isset($ruleArray[$i]) && $ruleArray[$i] === '*') {
+                for ($i = 0; $i < count($fieldArray); $i++) {
+                    if (isset($ruleArray[$i]) && $ruleArray[$i] === '*') {
                         $ruleArray[$i] = $fieldArray[$i];
                     }
                 }

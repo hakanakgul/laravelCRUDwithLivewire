@@ -133,6 +133,7 @@ class StudentLivewire extends Component
     {
 
         $students = Student::where('name', 'like', '%' . $this->search . '%')->orderBy("id", "asc")->paginate(10);
+
         return view('livewire.student-livewire', [
             "students" => $students,
         ]);
